@@ -1,0 +1,24 @@
+i2h:
+  _target_: networks.basics.MLP
+  layer_sizes: [12, 200, 1000]
+  activation:
+    _target_: torch.nn.ELU
+  use_bn: False
+
+h2h:
+  _target_: networks.resnet.ResBlocks
+  n_features: 1000
+  activation:
+    _target_: torch.nn.ELU
+  n_blocks: 2
+  n_linears_per_block: 3
+  use_bn: False
+  use_scale: True
+  block_type: pre-act
+
+h2o:
+  _target_: networks.basics.MLP
+  layer_sizes: [1000, 200, 12]
+  activation:
+    _target_: torch.nn.ELU
+  use_bn: False

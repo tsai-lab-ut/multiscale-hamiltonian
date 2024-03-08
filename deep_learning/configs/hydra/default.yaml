@@ -1,0 +1,8 @@
+# https://hydra.cc/docs/configure_hydra/intro/
+
+# output directory, generated dynamically on each run
+run:
+  dir: ${paths.log_dir}/${task_name}/runs/${run_name}_${run_id}
+sweep:
+  dir: ${paths.log_dir}/${task_name}/multiruns/${run_name}_${run_id}
+  subdir: ${hydra.job.num}

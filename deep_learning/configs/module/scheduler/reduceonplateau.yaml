@@ -1,0 +1,12 @@
+scheduler:
+    _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+    mode: min
+    factor: 0.75
+    min_lr: 1e-8
+    patience: 5
+    cooldown: 5
+    verbose: True
+extras:
+    monitor: train/loss
+    interval: epoch
+    frequency: 1

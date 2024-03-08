@@ -1,0 +1,2 @@
+metrics_logger:
+  _target_: callbacks.metrics_logger.ManualMetricsLogger

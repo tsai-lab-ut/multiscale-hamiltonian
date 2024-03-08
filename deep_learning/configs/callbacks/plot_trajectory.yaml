@@ -1,0 +1,4 @@
+plot_trajectory:
+  _target_: callbacks.plot_prediction.PlotTrajectory
+  nsteps: 1000
+  log_freq: 10

@@ -1,0 +1,10 @@
+[problem]                           # ode problem
+_name_ = "fpu"
+omega = 300.0
+
+[integration]
+Delta_t = 1.0                       # time interval 
+N = 10                              # number of intervals
+nsteps = 65536                         # number of steps per interval
+method = "KahanLi8"               # solver method
+use_float64x4 = true                # use Float64x4 

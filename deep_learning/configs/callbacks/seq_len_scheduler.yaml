@@ -1,0 +1,6 @@
+seq_len_scheduler:
+  _target_: callbacks.sequence_weights.SequenceLengthScheduler
+  weights: [1., 1., 1., 1., 1.]
+  milestones: [10, 20, 30, 40]
+  init_len: 1
+  end_len: 5

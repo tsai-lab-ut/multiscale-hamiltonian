@@ -1,0 +1,14 @@
+i2h:
+  _target_: torch.nn.Identity
+
+h2h:
+  _target_: networks.attention.AttentionMLP
+  input_dim: 12 
+  output_dim: 12 
+  hidden_dim: 500
+  n_hidden_layers: 4
+  activation:
+    _target_: torch.nn.ELU
+
+h2o:
+  _target_: torch.nn.Identity

@@ -1,0 +1,12 @@
+i2h:
+  _target_: torch.nn.Identity
+
+h2h:
+  _target_: networks.basics.MLP
+  layer_sizes: [12, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 12]
+  activation:
+    _target_: torch.nn.ELU
+  use_bn: False
+
+h2o:
+  _target_: torch.nn.Identity

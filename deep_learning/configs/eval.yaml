@@ -1,0 +1,47 @@
+# @package _global_
+
+# specify here default configuration
+# order of defaults determines the order in which configs override each other
+defaults:
+  - datamodule: default
+  - callbacks:
+    - fixed_seq_weights
+    - metrics_logger
+  - trainer: gpu
+  - paths: default
+  - hydra: default
+  - _self_
+
+module:
+  _target_: models.SolutionMap
+
+# seed for random number generators in pytorch, numpy and python.random
+seed: 42
+
+# task name, determines output directory path
+task_name: eval
+
+# predict on test samples
+predict: True
+
+# passing checkpoint path is necessary for evaluation
+ckpt_path: ???
+
+# name and id of the run, accessed by loggers and determine output directory path
+run_name: ${get_run_name:${ckpt_path}}
+run_id: ${get_run_id:${ckpt_path}}
+
+# suffix appended to the output directory path
+output_dir_suffix: ""
+
+hydra:
+  run:
+    dir: ${paths.log_dir}/${task_name}/runs/${run_name}_${run_id}${output_dir_suffix}
+
+# runs with execution time profiling
+profiler:
+  _target_: pytorch_lightning.profilers.SimpleProfiler
+  # _target_: pytorch_lightning.profilers.AdvancedProfiler
+  # _target_: pytorch_lightning.profilers.PyTorchProfiler
+  dirpath: ${paths.output_dir}
+  filename: perf-logs

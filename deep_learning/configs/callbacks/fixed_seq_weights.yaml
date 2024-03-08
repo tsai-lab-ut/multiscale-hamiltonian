@@ -1,0 +1,3 @@
+fixed_seq_weights:
+  _target_: callbacks.sequence_weights.FixedSequenceWeights
+  weights: [1., 1., 1., 1., 1., 1.]

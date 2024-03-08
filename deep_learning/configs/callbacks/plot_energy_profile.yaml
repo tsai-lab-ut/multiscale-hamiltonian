@@ -1,0 +1,4 @@
+plot_energy_profile:
+  _target_: callbacks.plot_prediction.PlotEnergyProfile
+  nsteps: 1000
+  log_freq: 10

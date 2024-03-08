@@ -1,0 +1,35 @@
+# @package _global_
+
+defaults:
+  - default
+  - override /module/optimizer: sgd
+  - override /module/scheduler: reduceonplateau
+
+callbacks:
+  fixed_seq_weights: 
+    weights: [1., 1., 1., 1.]
+
+module:
+  optimizer:
+    nesterov: False
+    momentum: 0.
+    weight_decay: 0.
+  network: 
+    h2h:
+      n_linears_per_block: 2
+      block_type: post-act
+
+trainer:
+  max_epochs: 317
+  accelerator: gpu
+  devices: 1
+  enable_checkpointing: True
+  detect_anomaly: true # raise exception if NaN or +/-inf is detected in any tensor
+
+profiler: null
+
+# resume_from_ckpt: /workspace/projects_rui/learnsolnmap/deep_learning/logs/train/runs/20240113-212935_sfd3z2/checkpoints/epoch312-val_loss8.693e-02.ckpt
+# resume_from_ckpt: /workspace/projects_rui/learnsolnmap/deep_learning/logs/train/runs/20240113-212935_sfd3z2/checkpoints/epoch309-val_loss9.415e-02.ckpt
+
+# init_model_ckpt: /workspace/projects_rui/learnsolnmap/deep_learning/logs/train/runs/20240113-212935_sfd3z2/checkpoints/epoch312-val_loss8.693e-02.ckpt
+init_model_ckpt: /workspace/projects_rui/learnsolnmap/deep_learning/logs/train/runs/20240113-212935_sfd3z2/checkpoints/epoch309-val_loss9.415e-02.ckpt

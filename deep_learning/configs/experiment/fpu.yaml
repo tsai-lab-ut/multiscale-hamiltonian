@@ -1,0 +1,56 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py experiment=fpu
+
+defaults:
+  - override /module/problem: fpu
+  - override /module/loss: anchoredenergynormsquared
+  - override /module/optimizer: adamw
+  - override /module/scheduler: 1cycle
+  - override /module/network: enc-resblocks-dec
+  - override /trainer: gpu
+  - override /callbacks: 
+    - model_checkpoint
+    - lr_monitor
+    - fixed_seq_weights
+    - metrics_logger
+    - tqdm_progress_bar
+    - plot_energy_profile
+
+trainer:
+  max_epochs: 1000
+  # gradient_clip_val: 2.0
+  # gradient_clip_algorithm: value
+
+module:
+  Delta_t: 1.
+
+  # regularization:
+    # comm_strength: 0.01
+  optimizer:
+    lr: 1e-4
+  network:
+    i2h:
+      layer_sizes: [12, 200, 200]
+    h2h:
+      # input_dim: 500 
+      # output_dim: 500 
+      # hidden_dim: 200
+      n_features: 200
+    h2o:
+      layer_sizes: [200, 200, 12]
+#   problem:
+#     Omega: 50
+
+callbacks:
+  fixed_seq_weights:
+    _target_: callbacks.sequence_weights.FixedSequenceWeights
+    weights: [1., 1., 1., 1., 1., 1.]
+    # weights: [1.]
+
+loggers:
+  wandb:
+    group: fpu
+
+freeze_encoder_decoder: False

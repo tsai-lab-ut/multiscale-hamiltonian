@@ -1,0 +1,17 @@
+_target_: models.SolutionMap
+
+defaults:
+  - problem: fpu
+  - optimizer: adamw
+  - scheduler: 1cycle
+  - loss: energynormsquared
+  - network: resnet
+  - _self_
+
+Delta_t: 1.0
+
+regularization:
+  comm_strength: 0.
+  lagr_strength: 0.
+
+weight_init: xavier_uniform

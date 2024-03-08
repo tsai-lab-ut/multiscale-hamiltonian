@@ -1,0 +1,11 @@
+scheduler:
+  _target_: torch.optim.lr_scheduler.OneCycleLR
+  max_lr: ${module.optimizer.lr}
+  epochs: ${trainer.max_epochs}
+  steps_per_epoch: 1600
+  anneal_strategy: cos
+  cycle_momentum: False
+  three_phase: False
+  pct_start: 0.
+extras:
+  interval: step

@@ -1,0 +1,14 @@
+i2h:
+  _target_: torch.nn.Identity
+
+h2h:
+  _target_: networks.resnet.SymmetricResNet
+  input_dim: 12
+  activation:
+    _target_: torch.nn.ELU
+  expand_blocks_dims: [100, 200, 500]
+  n_linears_per_block: 3 
+  use_bn: False
+
+h2o:
+  _target_: torch.nn.Identity

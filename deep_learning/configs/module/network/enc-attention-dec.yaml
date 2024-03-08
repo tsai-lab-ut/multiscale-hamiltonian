@@ -1,0 +1,22 @@
+i2h:
+  _target_: networks.basics.MLP
+  layer_sizes: [12, 200, 200]
+  activation:
+    _target_: torch.nn.ELU
+  use_bn: False
+
+h2h:
+  _target_: networks.attention.AttentionMLP
+  input_dim: 200 
+  output_dim: 200 
+  hidden_dim: 500
+  n_hidden_layers: 4
+  activation:
+    _target_: torch.nn.ELU
+
+h2o:
+  _target_: networks.basics.MLP
+  layer_sizes: [200, 200, 12]
+  activation:
+    _target_: torch.nn.ELU
+  use_bn: False

@@ -1,0 +1,6 @@
+_target_: losses.ScaledMSELoss
+
+scaler: 
+  _target_: networks.basics.Scaler
+  scaling_factors: [1., 1.]
+reduction: mean

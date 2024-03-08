@@ -1,0 +1,19 @@
+i2h:
+  _target_: torch.nn.Identity
+
+h2h:
+  _target_: networks.resnet.ResNet
+  input_dim: 12
+  output_dim: 12
+  hidden_dim: 1000
+  activation:
+    _target_: torch.nn.ELU
+  n_blocks: 3
+  n_linears_per_block: 1 
+  use_bn: False
+  use_scale: True
+  use_big_skip: False
+  block_type: pre-act
+
+h2o:
+  _target_: torch.nn.Identity

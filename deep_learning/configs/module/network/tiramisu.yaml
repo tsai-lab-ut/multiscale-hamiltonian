@@ -1,0 +1,16 @@
+i2h:
+  _target_: torch.nn.Identity
+
+h2h:
+  _target_: networks.tiramisu.TiramisuNet
+  in_features: 12 
+  activation: 
+    _target_: torch.nn.ELU
+  expand_blocks: [4,4,4]
+  shrink_blocks: [4,4,4] 
+  bottleneck_layers: 5
+  growth_rate: 64
+  use_bn: False
+
+h2o:
+  _target_: torch.nn.Identity

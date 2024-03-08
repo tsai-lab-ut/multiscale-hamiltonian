@@ -1,0 +1,22 @@
+[problem]                           # ode problem
+_name_ = "fpu"
+omega = 300.0
+
+[algorithm]                         # parareal algorithm
+_name_ = "interpolative"  
+tol = 1e-14
+use_bias = true
+centering = true
+k_most_recent = -1
+k_nearest = -1
+
+[integration]
+Delta_t = 1.0                       # time interval 
+N = 10                              # number of intervals
+Nf = 262144                         # number of fine steps per interval
+Nc = 512                            # number of coarse steps per interval
+niters = 5                         # number of parareal iterations
+fine_method = "KahanLi8"            # fine solver method
+coarse_method = "CalvoSanz4"        # coarse solver method
+# nn_ckpt_path =                    # nn checkpoint path
+use_float64x4 = false               # use Float64x4 for coarse solver (fine solver always uses Float64x4)

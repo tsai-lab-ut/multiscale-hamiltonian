@@ -1,0 +1,14 @@
+i2h:
+  _target_: torch.nn.Identity
+
+h2h:
+  _target_: networks.resnet.ResMLP
+  layer_sizes: [12, 1000, 1000, 1000, 1000, 12]
+  activation:
+    _target_: torch.nn.ELU
+  use_bn: False
+  use_scale: True
+  use_big_skip: False
+
+h2o:
+  _target_: torch.nn.Identity

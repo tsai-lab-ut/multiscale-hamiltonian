@@ -1,0 +1,11 @@
+wandb:
+  _target_: pytorch_lightning.loggers.WandbLogger
+  name: ${run_name}
+  save_dir: ${paths.log_dir}
+  offline: False
+  id: ${run_id}
+  project: solutionmap
+  log_model: False
+  group: null
+  tags: []
+  job_type: ""

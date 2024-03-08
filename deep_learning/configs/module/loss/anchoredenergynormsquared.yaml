@@ -1,0 +1,4 @@
+_target_: losses.AnchoredMeanEnergyNormSquaredLoss
+
+problem: ${module.problem}
+reduction: mean
